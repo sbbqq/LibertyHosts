@@ -88,6 +88,9 @@
     <Compile Include="Forms\formToolbox.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Moudles\mdlDownload.vb" />
+    <Compile Include="Moudles\mdlFile.vb" />
+    <Compile Include="Moudles\mdlPing.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -144,8 +147,6 @@
     <Content Include="Resources\google.ico" />
     <Content Include="Resources\googlelogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

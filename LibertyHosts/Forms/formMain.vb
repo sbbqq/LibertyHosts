@@ -1,4 +1,8 @@
-﻿Public Class formMain
+﻿Imports System.Threading
+Public Class formMain
+    Dim thGetHostsFile As Thread
+    Dim thPing As Thread
+
     Private varOriginalRegion As Region = Nothing   ' 用于窗体移动 　　
     Private varFormDragging As Boolean = False
     Private varPointClicked As Point
@@ -34,5 +38,77 @@
     Private Sub ToolBoxButton_Click(sender As Object, e As EventArgs) Handles ToolBoxButton.Click
         formToolbox.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub GetHostsButton_Click(sender As Object, e As EventArgs) Handles GetHostsButton.Click
+        thGetHostsFile = New Thread(AddressOf GetHosts)
+        thGetHostsFile.Start()
+    End Sub
+
+    Private Sub GetHosts()
+        Try
+            Dim varInfo As String
+            Dim varHostsText As String
+            Dim varWriteHosts As Boolean
+            varInfo = "获取Hosts文件中"
+            Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+
+            varHostsText = mdlDownload.funcGetHosts()
+            If varHostsText = "" Then
+                varInfo = "获取Hosts文件失败"
+                Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+                thGetHostsFile.Abort()
+                Exit Sub
+            End If
+
+            varInfo = "写入Hosts文件中"
+            Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+            varWriteHosts = mdlFile.funcWirteHosts(varHostsText, True)
+
+            If varWriteHosts = False Then
+                varInfo = "写入Hosts文件失败"
+                Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+                thGetHostsFile.Abort()
+                Exit Sub
+            End If
+            varInfo = "Hosts修改完成" & vbNewLine & "请点击''查询翻墙状态''来验证自由上网是否成功"
+            Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+        Catch varExc As Exception
+            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+        Finally
+            thGetHostsFile.Abort()
+        End Try
+    End Sub
+    Private Delegate Sub subLabelDelegate(ByVal varString As String) '自定义一个委托
+
+    Private Sub SetInfo(ByVal Info As String) '与委托相同签名的函数或过程
+        Me.Label.Text = Info
+        Me.Label.Left = (Me.Width - Me.Label.Width) \ 2
+    End Sub
+
+    Private Sub CheckHostsButton_Click(sender As Object, e As EventArgs) Handles CheckHostsButton.Click
+        thPing = New Thread(AddressOf Ping)
+        thPing.Start()
+    End Sub
+
+    Private Sub Ping()
+        Try
+            Dim varPingReply As Single
+            Dim varInfo As String
+
+            varPingReply = mdlPing.funcPing("google.com")
+            If varPingReply = -1 Then
+                varInfo = "自由上网貌似失败了"
+                Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+            Else
+                varInfo = "自由上网成功" & vbNewLine & "Google延迟:" & varPingReply & "Ms,请使用Https访问Google"
+                Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+            End If
+
+        Catch varExc As Exception
+            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+        Finally
+            thPing.Abort()
+        End Try
     End Sub
 End Class

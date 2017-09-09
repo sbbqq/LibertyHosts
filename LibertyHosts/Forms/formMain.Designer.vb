@@ -81,6 +81,7 @@ Partial Class formMain
         Me.Label.Size = New System.Drawing.Size(135, 21)
         Me.Label.TabIndex = 6
         Me.Label.Text = "Fight For Liberty" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1
         '

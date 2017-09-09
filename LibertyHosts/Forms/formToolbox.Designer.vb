@@ -25,9 +25,9 @@ Partial Class formToolbox
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(formToolbox))
         Me.MinimizeButton = New System.Windows.Forms.PictureBox()
         Me.CloseButton = New System.Windows.Forms.PictureBox()
-        Me.GetHostsButton = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ViewHostsButton = New System.Windows.Forms.Button()
+        Me.EditHosts = New System.Windows.Forms.Button()
+        Me.CleanHosts = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.MinimizeButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CloseButton, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,41 +53,41 @@ Partial Class formToolbox
         Me.CloseButton.TabIndex = 2
         Me.CloseButton.TabStop = False
         '
-        'GetHostsButton
+        'ViewHostsButton
         '
-        Me.GetHostsButton.BackColor = System.Drawing.Color.White
-        Me.GetHostsButton.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.GetHostsButton.ForeColor = System.Drawing.Color.Black
-        Me.GetHostsButton.Location = New System.Drawing.Point(46, 66)
-        Me.GetHostsButton.Name = "GetHostsButton"
-        Me.GetHostsButton.Size = New System.Drawing.Size(182, 51)
-        Me.GetHostsButton.TabIndex = 4
-        Me.GetHostsButton.Text = "访问Hosts文件夹"
-        Me.GetHostsButton.UseVisualStyleBackColor = False
+        Me.ViewHostsButton.BackColor = System.Drawing.Color.White
+        Me.ViewHostsButton.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.ViewHostsButton.ForeColor = System.Drawing.Color.Black
+        Me.ViewHostsButton.Location = New System.Drawing.Point(46, 66)
+        Me.ViewHostsButton.Name = "ViewHostsButton"
+        Me.ViewHostsButton.Size = New System.Drawing.Size(182, 51)
+        Me.ViewHostsButton.TabIndex = 4
+        Me.ViewHostsButton.Text = "访问Hosts文件夹"
+        Me.ViewHostsButton.UseVisualStyleBackColor = False
         '
-        'Button1
+        'EditHosts
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.Black
-        Me.Button1.Location = New System.Drawing.Point(46, 139)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(182, 51)
-        Me.Button1.TabIndex = 5
-        Me.Button1.Text = "编辑Hosts文件"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.EditHosts.BackColor = System.Drawing.Color.White
+        Me.EditHosts.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.EditHosts.ForeColor = System.Drawing.Color.Black
+        Me.EditHosts.Location = New System.Drawing.Point(46, 139)
+        Me.EditHosts.Name = "EditHosts"
+        Me.EditHosts.Size = New System.Drawing.Size(182, 51)
+        Me.EditHosts.TabIndex = 5
+        Me.EditHosts.Text = "编辑Hosts文件"
+        Me.EditHosts.UseVisualStyleBackColor = False
         '
-        'Button2
+        'CleanHosts
         '
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.Black
-        Me.Button2.Location = New System.Drawing.Point(46, 212)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(182, 51)
-        Me.Button2.TabIndex = 6
-        Me.Button2.Text = "停止自由上网"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.CleanHosts.BackColor = System.Drawing.Color.White
+        Me.CleanHosts.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.CleanHosts.ForeColor = System.Drawing.Color.Black
+        Me.CleanHosts.Location = New System.Drawing.Point(46, 212)
+        Me.CleanHosts.Name = "CleanHosts"
+        Me.CleanHosts.Size = New System.Drawing.Size(182, 51)
+        Me.CleanHosts.TabIndex = 6
+        Me.CleanHosts.Text = "停止自由上网"
+        Me.CleanHosts.UseVisualStyleBackColor = False
         '
         'Button3
         '
@@ -108,9 +108,9 @@ Partial Class formToolbox
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(275, 382)
         Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.GetHostsButton)
+        Me.Controls.Add(Me.CleanHosts)
+        Me.Controls.Add(Me.EditHosts)
+        Me.Controls.Add(Me.ViewHostsButton)
         Me.Controls.Add(Me.MinimizeButton)
         Me.Controls.Add(Me.CloseButton)
         Me.ForeColor = System.Drawing.Color.White
@@ -128,8 +128,8 @@ Partial Class formToolbox
 
     Friend WithEvents MinimizeButton As PictureBox
     Friend WithEvents CloseButton As PictureBox
-    Friend WithEvents GetHostsButton As Button
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ViewHostsButton As Button
+    Friend WithEvents EditHosts As Button
+    Friend WithEvents CleanHosts As Button
     Friend WithEvents Button3 As Button
 End Class

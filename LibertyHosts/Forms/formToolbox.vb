@@ -27,4 +27,30 @@
         Me.Close()
         formMain.Show()
     End Sub
+
+    Private Sub GetHostsButton_Click(sender As Object, e As EventArgs) Handles ViewHostsButton.Click
+        Try
+            System.Diagnostics.Process.Start("explorer.exe", "/select," & mdlFile.funcGetHostsDir)
+        Catch varExc As Exception
+            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub EditHosts_Click(sender As Object, e As EventArgs) Handles EditHosts.Click
+        Try
+            System.Diagnostics.Process.Start(mdlFile.funcGetHostsDir)
+        Catch varExc As Exception
+            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub CleanHosts_Click(sender As Object, e As EventArgs) Handles CleanHosts.Click
+        Try
+            Dim varWriteHosts As Boolean
+            varWriteHosts = mdlFile.funcWirteHosts("", True)
+            CleanHosts.Text = "已经停止自由上网"
+        Catch varExc As Exception
+            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+        End Try
+    End Sub
 End Class
