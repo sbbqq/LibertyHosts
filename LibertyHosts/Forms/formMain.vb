@@ -90,7 +90,7 @@ Public Class formMain
             Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
 
         Catch varExc As Exception
-            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+            mdlMessageBox.MessageBox(varExc.Message)
         Finally
             thGetHostsFile.Abort()
         End Try
@@ -125,13 +125,13 @@ Public Class formMain
             End If
 
         Catch varExc As Exception
-            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+            mdlMessageBox.MessageBox(varExc.Message)
         Finally
             thPing.Abort()
         End Try
     End Sub
 
     Private Sub Label_Click(sender As Object, e As EventArgs) Handles Label.Click
-        System.Diagnostics.Process.Start("https://pan.baidu.com/s/1bp71HMZ")
+        System.Diagnostics.Process.Start("https://github.com/Observateurs/LibertyHosts/releases")
     End Sub
 End Class

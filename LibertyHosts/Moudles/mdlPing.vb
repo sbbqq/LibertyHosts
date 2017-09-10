@@ -19,7 +19,7 @@ Module mdlPing
             End If
 
         Catch varExc As Exception
-            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+            mdlMessageBox.MessageBox(varExc.Message)
             Return -1
         End Try
     End Function

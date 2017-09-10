@@ -103,8 +103,21 @@
     <Compile Include="Forms\formToolbox.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Others\formHostsEditor.Designer.vb">
+      <DependentUpon>formHostsEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Others\formHostsEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Others\formMessageBox.Designer.vb">
+      <DependentUpon>formMessageBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Others\formMessageBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Moudles\mdlDownload.vb" />
     <Compile Include="Moudles\mdlFile.vb" />
+    <Compile Include="Moudles\mdlMessageBox.vb" />
     <Compile Include="Moudles\mdlPing.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -128,6 +141,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\formToolbox.resx">
       <DependentUpon>formToolbox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Others\formHostsEditor.resx">
+      <DependentUpon>formHostsEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Others\formMessageBox.resx">
+      <DependentUpon>formMessageBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

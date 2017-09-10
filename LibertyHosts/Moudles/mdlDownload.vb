@@ -14,7 +14,7 @@ Module mdlDownload
             varSr.Dispose()
         Catch varExc As Exception
             Return ""
-            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+            mdlMessageBox.MessageBox(varExc.Message)
         End Try
     End Function
 
@@ -38,7 +38,7 @@ Module mdlDownload
 
         Catch varExc As Exception
             Return ""
-            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
+            mdlMessageBox.MessageBox(varExc.Message)
         End Try
     End Function
 End Module
