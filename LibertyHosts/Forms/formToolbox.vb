@@ -53,4 +53,12 @@
             MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub About_Click(sender As Object, e As EventArgs) Handles About.Click
+        MessageBox.Show("LibertyHosts 1.01 By Observateurs" & vbNewLine _
+                         & "Github:https://github.com/Observateurs/LibertyHosts" & vbNewLine _
+                         & "Apache License 2.0" & vbNewLine _
+                         & "Hosts源地址:https://github.com/googlehosts/hosts",
+                        caption:="关于LibertyHosts")
+    End Sub
 End Class

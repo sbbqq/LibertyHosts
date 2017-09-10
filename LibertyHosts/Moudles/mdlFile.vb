@@ -8,20 +8,23 @@ Module mdlFile
 
     Function funcWirteHosts(varText As String, varShell As Boolean) As Boolean
         Try
-            Dim varNow As String = Now.ToString("-yyyy-MM-dd-HH-mm-ss.bak") '创建备份文件
+            '创建备份文件(hosts-yyyy-MM-dd-HH-mm-ss.bak)
+            Dim varNow As String = Now.ToString("-yyyy-MM-dd-HH-mm-ss.bak")
             File.Copy(varHostsDir, varHostsDir & varNow)
 
             Dim varStr As New IO.StreamWriter(varHostsDir)
             If File.Exists(varHostsDir) = True Then
                 varStr.WriteLine(varText)
             Else
+                '如果Hosts文件不存在,则先创建再写入
                 File.Create(varHostsDir)
                 varStr.WriteLine(varText)
             End If
             varStr.Close()
 
             If varShell = True Then
-                Shell("cmd.exe /c ipconfig/flushdns", AppWinStyle.Hide) '调用Bash刷新DNS缓存
+                '调用Bash刷新DNS缓存
+                Shell("cmd.exe /c ipconfig/flushdns", AppWinStyle.Hide)
             End If
 
             Return True
@@ -32,6 +35,7 @@ Module mdlFile
     End Function
 
     Function funcGetHostsDir() As String
+        '获取Hosts文件路径
         Return varHostsDir
     End Function
 End Module

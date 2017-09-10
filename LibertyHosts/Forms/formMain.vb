@@ -1,9 +1,10 @@
 ﻿Imports System.Threading
 Public Class formMain
-    Dim thGetHostsFile As Thread
-    Dim thPing As Thread
+    Dim thGetHostsFile As Thread '获取Hosts文件的线程
+    Dim thPing As Thread '获取延迟的线程
+    Dim thStatistics As Thread '收集统计信息的线程
 
-    Private varOriginalRegion As Region = Nothing   ' 用于窗体移动 　　
+    Private varOriginalRegion As Region = Nothing   '用于窗体移动 　　
     Private varFormDragging As Boolean = False
     Private varPointClicked As Point
 
@@ -22,9 +23,16 @@ Public Class formMain
         ReleaseCapture()
         SendMessage(Me.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0)
     End Sub
-
+    Private Sub Statistics()
+        Try
+            mdlDownload.subStatistics() '收集统计信息
+        Finally
+            thStatistics.Abort()
+        End Try
+    End Sub
     Private Sub formMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        thStatistics = New Thread(AddressOf Statistics)
+        thStatistics.Start()
     End Sub
 
     Private Sub MinimizeButton_Click(sender As Object, e As EventArgs) Handles MinimizeButton.Click
@@ -71,8 +79,9 @@ Public Class formMain
                 thGetHostsFile.Abort()
                 Exit Sub
             End If
-            varInfo = "Hosts修改完成" & vbNewLine & "请点击''查询翻墙状态''来验证自由上网是否成功"
+            varInfo = "Hosts修改完成" & vbNewLine & "请点击''检查网络状态''来验证自由上网是否成功"
             Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
+
         Catch varExc As Exception
             MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
         Finally
@@ -98,7 +107,7 @@ Public Class formMain
 
             varPingReply = mdlPing.funcPing("google.com")
             If varPingReply = -1 Then
-                varInfo = "自由上网貌似失败了"
+                varInfo = "自由上网失败,无法连接到Google"
                 Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varInfo)
             Else
                 varInfo = "自由上网成功" & vbNewLine & "Google延迟:" & varPingReply & "Ms,请使用Https访问Google"

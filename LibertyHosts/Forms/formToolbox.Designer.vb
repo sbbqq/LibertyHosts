@@ -28,7 +28,7 @@ Partial Class formToolbox
         Me.ViewHostsButton = New System.Windows.Forms.Button()
         Me.EditHosts = New System.Windows.Forms.Button()
         Me.CleanHosts = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.About = New System.Windows.Forms.Button()
         CType(Me.MinimizeButton, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CloseButton, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -89,17 +89,17 @@ Partial Class formToolbox
         Me.CleanHosts.Text = "停止自由上网"
         Me.CleanHosts.UseVisualStyleBackColor = False
         '
-        'Button3
+        'About
         '
-        Me.Button3.BackColor = System.Drawing.Color.White
-        Me.Button3.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.Black
-        Me.Button3.Location = New System.Drawing.Point(44, 285)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(182, 51)
-        Me.Button3.TabIndex = 7
-        Me.Button3.Text = "关于"
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.About.BackColor = System.Drawing.Color.White
+        Me.About.Font = New System.Drawing.Font("等线", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.About.ForeColor = System.Drawing.Color.Black
+        Me.About.Location = New System.Drawing.Point(44, 285)
+        Me.About.Name = "About"
+        Me.About.Size = New System.Drawing.Size(182, 51)
+        Me.About.TabIndex = 7
+        Me.About.Text = "关于"
+        Me.About.UseVisualStyleBackColor = False
         '
         'formToolbox
         '
@@ -107,7 +107,7 @@ Partial Class formToolbox
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(275, 382)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.About)
         Me.Controls.Add(Me.CleanHosts)
         Me.Controls.Add(Me.EditHosts)
         Me.Controls.Add(Me.ViewHostsButton)
@@ -131,5 +131,5 @@ Partial Class formToolbox
     Friend WithEvents ViewHostsButton As Button
     Friend WithEvents EditHosts As Button
     Friend WithEvents CleanHosts As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents About As Button
 End Class

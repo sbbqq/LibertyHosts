@@ -85,7 +85,7 @@ Partial Class formMain
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.LibertyHosts.My.Resources.Resources.googlelogo
+        Me.PictureBox1.Image = Global.LibertyHosts.My.Resources.Resources.GoogleLogo
         Me.PictureBox1.Location = New System.Drawing.Point(163, 69)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(272, 92)
