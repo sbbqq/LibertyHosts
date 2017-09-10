@@ -18,12 +18,27 @@ Module mdlDownload
         End Try
     End Function
 
-    Public Sub subStatistics()
-        '收集统计信息
+    Public Function subStatistics() As String
+        '收集统计信息并检查更新
         Try
+            Dim varUpdateInfo
             Dim varStream As IO.Stream = WebRequest.Create("http://hosts.endless-ss.com/count.php").GetResponse().GetResponseStream()
-        Catch
-            Exit Try
+            varStream.Dispose()
+
+            varStream = WebRequest.Create("https://raw.githubusercontent.com/Observateurs/LibertyHosts/master/Update/latest.txt").GetResponse().GetResponseStream()
+            Dim varSr As StreamReader = New StreamReader(varStream, System.Text.Encoding.UTF8)
+            varUpdateInfo = varSr.ReadLine
+            varUpdateInfo = Replace(varUpdateInfo, "Latest Version:", "")
+            If varUpdateInfo <> "1.01" Then
+                Return varUpdateInfo
+            Else
+                Return ""
+            End If
+            varSr.Dispose()
+
+        Catch varExc As Exception
+            Return ""
+            MessageBox.Show(varExc.Message, Nothing, Nothing, MessageBoxIcon.Error)
         End Try
-    End Sub
+    End Function
 End Module

@@ -25,7 +25,14 @@ Public Class formMain
     End Sub
     Private Sub Statistics()
         Try
-            mdlDownload.subStatistics() '收集统计信息
+            '收集统计信息并检查更新
+            Dim varUpdateInfo As String
+            varUpdateInfo = mdlDownload.subStatistics()
+            If varUpdateInfo <> "" Then
+                varUpdateInfo = "检测到新版本:" & varUpdateInfo & vbNewLine & "点击此处升级"
+                Me.Invoke(New subLabelDelegate(AddressOf SetInfo), varUpdateInfo)
+                Me.Invoke(New subLabelDelegate(AddressOf EnableLabel), varUpdateInfo)
+            End If
         Finally
             thStatistics.Abort()
         End Try
@@ -94,6 +101,9 @@ Public Class formMain
         Me.Label.Text = Info
         Me.Label.Left = (Me.Width - Me.Label.Width) \ 2
     End Sub
+    Private Sub EnableLabel(ByVal Info As String)
+        Me.Label.Enabled = Enabled
+    End Sub
 
     Private Sub CheckHostsButton_Click(sender As Object, e As EventArgs) Handles CheckHostsButton.Click
         thPing = New Thread(AddressOf Ping)
@@ -119,5 +129,9 @@ Public Class formMain
         Finally
             thPing.Abort()
         End Try
+    End Sub
+
+    Private Sub Label_Click(sender As Object, e As EventArgs) Handles Label.Click
+        System.Diagnostics.Process.Start("https://pan.baidu.com/s/1bp71HMZ")
     End Sub
 End Class

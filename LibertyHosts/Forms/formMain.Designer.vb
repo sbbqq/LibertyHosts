@@ -74,6 +74,7 @@ Partial Class formMain
         'Label
         '
         Me.Label.AutoSize = True
+        Me.Label.Enabled = False
         Me.Label.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label.ForeColor = System.Drawing.Color.Gray
         Me.Label.Location = New System.Drawing.Point(232, 189)

@@ -1,5 +1,5 @@
 ﻿Public Class formToolbox
-    Private varOriginalRegion As Region = Nothing   ' 用于窗体移动 　　
+    Private varOriginalRegion As Region = Nothing   '用于窗体移动 　　
     Private varFormDragging As Boolean = False
     Private varPointClicked As Point
 
@@ -59,6 +59,6 @@
                          & "Github:https://github.com/Observateurs/LibertyHosts" & vbNewLine _
                          & "Apache License 2.0" & vbNewLine _
                          & "Hosts源地址:https://github.com/googlehosts/hosts",
-                        caption:="关于LibertyHosts")
+                        caption:="关于 LibertyHosts")
     End Sub
 End Class
