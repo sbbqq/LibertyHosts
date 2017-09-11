@@ -1,6 +1,6 @@
 # LibertyHosts
 原理：软件自动获取并修改Hosts<br>
-Hosts源地址：https://github.com/googlehosts/hosts
+Hosts源地址：https://github.com/googlehosts/hosts<br>
 此软件是Hello Google的重写版本，换了新的Hosts源<br>
 支持Google大部分服务,Facebook,Twitter,Dropbox,部分Youtube视频等<br>
 自动检查自由上网状态<br>
